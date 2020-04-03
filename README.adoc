@@ -1,0 +1,40 @@
+= MiniDo: The Micromanagement Mini TODO CLI
+
+Do you just really wanna micromanage yourself?
+Or perhaps, someone really wants to micromanage you?
+This is the main utility of "TODO" apps, but they all fail to truly optimize for that use-case.
+Fear no more, MiniDo is here for you.
+
+This project strives to achieve the standards of a link:https://trivial.technology/landing.html[Trivial Technology].
+
+== Usage
+Whenever someone tells you to do something that you're not going to do right away:
+`minido add the thing they said`
+This way, when the question comes up of "what is on your agenda", you can easily answer with `minido list`!
+
+Whenever someone bothers you with some menial task that you *do* do right away:
+`minido do the thing you just did`
+This way, if someone claims you aren't making enough progress on your agenda, you can show them why with `minido list done`!
+The entries that don't have a [date] section (but do have a [done date] section) are interruptions to your agenda, proof you weren't slacking!
+
+When you finish a task, you can move it from the TODO list to the DONE list with `minido done NUM`, where NUM is the current line no.
+You can find out the line number in `minido list`!
+
+Finally, sometimes, tasks get dropped, permanently, before you've had time to finish them.
+This happens often enough, that you have `minido rm NUM` for that!
+That command is like the done command, but it doesn't actually add the entry to the DONE list.
+
+== Configuration
+You can set the following environment variables:
+
+MINIDO_DIR:: the directory in which the default TODO and DONE files are in. Defaults to ~/todo.
+MINIDO_DONE:: the file for the DONE file. Defaults to done.txt inside the minido directory.
+MINIDO_TODO:: the file for the TODO file. Defaults to todo.txt inside the minido directory.
+MINIDO_FORMAT:: changes the format of the date sections. Defaults to `%Y-%m-%d`. You are recommended to keep it grepable.
+
+== Installation
+If you're using toasty-zsh, drop the .zwc file into `$zd/digests/`.
+
+If you're not using toasty-zsh, but are still on zsh, look at the bin/ file on how to autoload a digest.
+
+If you are not using zsh, you can use the bin/ file after changing the path to the zwc digest.

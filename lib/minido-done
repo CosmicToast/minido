@@ -1,0 +1,6 @@
+#!/bin/zsh
+lines=$(wc -l < $MINIDO_TODO)
+(( $1 )) && (( $1 <= lines )) || return
+
+minido-do $(sed -n $1p $MINIDO_TODO)
+minido-rm $1

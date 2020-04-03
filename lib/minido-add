@@ -1,0 +1,3 @@
+#!/bin/zsh
+(( $# )) || return
+echo $(minido-date) $@ >> $MINIDO_TODO

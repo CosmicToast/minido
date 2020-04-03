@@ -1,0 +1,8 @@
+#!/bin/zsh
+local done=0
+[[ $1 = "done" ]] && (( done++ ))
+
+echo -n '['
+(( done )) && echo -n 'done '
+echo -n $(date +$MINIDO_FORMAT)
+echo -n '] '

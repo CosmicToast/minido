@@ -1,0 +1,8 @@
+#!/bin/zsh
+local f=
+case $1 in
+	"done") f=$MINIDO_DONE ;;
+	*) 		f=$MINIDO_TODO ;;
+esac
+
+nl $f

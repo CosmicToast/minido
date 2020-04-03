@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+local path=/example/path/to/minido.zwc
+fpath+=( $path )
+autoload -w $path
+
+minido $@

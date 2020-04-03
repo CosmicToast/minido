@@ -1,0 +1,31 @@
+#!/bin/zsh
+
+usage() {
+	echo "usage: minido add|do|done|list|rm"
+	echo -e '\tadd some task to todo.txt'
+	echo -e '\tdo some task, saving it in done.txt'
+	echo -e '\tdone with some todo.txt task, moving it to done.txt'
+	echo -e '\tlist [done]: list todo.txt or done.txt tasks'
+	echo -e '\trm NUM: remove a line number from todo.txt'
+}
+
+# ensure vars are right
+[[ -z $MINIDO_DIR ]] && MINIDO_DIR=~/todo
+[[ -z $MINIDO_FORMAT ]] && MINIDO_FORMAT="%Y-%m-%d"
+[[ -z $MINIDO_DONE ]] && MINIDO_DONE=$MINIDO_DIR/done.txt
+[[ -z $MINIDO_TODO ]] && MINIDO_TODO=$MINIDO_DIR/todo.txt
+
+# ensure dirs exist
+mkdir -p $(dirname $MINIDO_DONE) $(dirname $MINIDO_TODO)
+
+(( $# )) || return
+local action=$1
+shift
+case $action in
+	add) minido-add $@ ;;
+	do) minido-do $@ ;;
+	done) minido-done $@ ;;
+	list) minido-list $@ ;;
+	rm) minido-rm $@ ;;
+	*) usage ;;
+esac
